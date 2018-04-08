@@ -3,8 +3,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <app-recipes *ngIf="loadedScreen == 'recipes'"></app-recipes>
-      <app-shopping-list *ngIf="loadedScreen == 'shopping-list'"></app-shopping-list>
+      <app-recipes *ngIf="loadedScreen === 'recipes'"></app-recipes>
+      <app-shopping-list *ngIf="loadedScreen != 'recipes'"></app-shopping-list>
     </div>
   </div>
 
