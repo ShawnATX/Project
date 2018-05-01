@@ -1,5 +1,6 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../recipe.model';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-recipe-list',
@@ -7,18 +8,14 @@ import { Recipe } from '../recipe.model';
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent implements OnInit {
-  @Output() recipeWasSelected = new EventEmitter<Recipe>();
+  recipes: Recipe[];
+  
 
-  recipes: Recipe[] = [
-    new Recipe('Family Chow', 'The Best Stuff', 'https://vignette.wikia.nocookie.net/en.futurama/images/5/5e/Bachlorchow.png/revision/latest?cb=20130716181656')
-  ];
+  constructor(private recipeService: RecipeService) { }
 
-  constructor() { }
   ngOnInit() {
+    this.recipes = this.recipeService.getRecipes();
   }
 
-  onRecipeSelected(recipe: Recipe){
-    this.recipeWasSelected.emit(recipe);
-  }
 
 }
